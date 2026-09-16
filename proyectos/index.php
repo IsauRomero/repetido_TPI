@@ -83,9 +83,10 @@ function calcularTotalIVA($precio, $cantidad, $iva) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Productos</h1>
+    <h1>Realice su compra</h1>
 
     <form action="" method="post">
         <label for=""> Nombre</label>
@@ -103,7 +104,8 @@ function calcularTotalIVA($precio, $cantidad, $iva) {
     </form>
 
     <br> <br>
-    <label for="">Cliente</label>
+    <div class="factura">
+        <label for="">Cliente</label>
     <p><?= $cliente['nombre'] ?? '' ?></p>
     <label for="">Producto</label>
     <p><?= $cliente['producto'] ?? '' ?></p>
@@ -113,5 +115,6 @@ function calcularTotalIVA($precio, $cantidad, $iva) {
     <p>$<?= number_format($cliente['subTotal'] ?? 0, 2) ?></p>
     <label for="">Total con IVA</label>
     <p>$<?= number_format($cliente['TotalconIva'] ?? 0, 2) ?></p>
+    </div>
 </body>
 </html>

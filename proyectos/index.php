@@ -42,6 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $subTotal = calcularSubTotal($precio, $cantidad);
         $totalConIVA = calcularTotalIVA($precio, $cantidad, IVA);
+
+        $subTotal = match (true) {
+            $subTotal >=40 => 0.10 * $subTotal,
+            $subTotal >=20 => 0.05 * $subTotal,
+
+            default => $subTotal
+        };
+        $totalConIVA = match (true) {
+            $totalConIVA < 0 => 0,
+            default => $totalConIVA
+        };
     }
     $cliente = $_SESSION['cliente'] ?? "";
 
@@ -54,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
     $_SESSION['clientes'][] = $cliente;
 
-    
+
 
 }
 function calcularSubTotal($precio, $cantidad) {

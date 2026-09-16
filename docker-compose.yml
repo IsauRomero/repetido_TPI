@@ -1,9 +1,9 @@
 services:
     apache:
       build: ./apache
-      container_name: parcial_repetido
+      container_name: repetido_apache
       restart: always
       volumes:
-        - ./proyectos/var/www/html
+        - "./proyectos:/var/www/html"
       ports:
         - "8090:80"
